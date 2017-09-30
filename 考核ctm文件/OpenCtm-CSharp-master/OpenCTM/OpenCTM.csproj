@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{116D9CAC-0C8C-466D-825A-A60BD026A747}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>OpenCTM</RootNamespace>
+    <AssemblyName>OpenCTM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="compression\CommonAlgorithm.cs" />
+    <Compile Include="data\Grid.cs" />
+    <Compile Include="demoCtm.cs" />
+    <Compile Include="io\CtmInputStream.cs" />
+    <Compile Include="errorhandling\EOFException.cs" />
+    <Compile Include="errorhandling\BadFormatException.cs" />
+    <Compile Include="errorhandling\InvalidDataException.cs" />
+    <Compile Include="data\AttributeData.cs" />
+    <Compile Include="data\Mesh.cs" />
+    <Compile Include="data\SortableVertex.cs" />
+    <Compile Include="data\Triangle.cs" />
+    <Compile Include="compression\MeshDecoder.cs" />
+    <Compile Include="compression\MeshEncoder.cs" />
+    <Compile Include="io\MeshInfo.cs" />
+    <Compile Include="io\CtmFileReader.cs" />
+    <Compile Include="compression\RawDecoder.cs" />
+    <Compile Include="io\CtmFileWriter.cs" />
+    <Compile Include="compression\RawEncoder.cs" />
+    <Compile Include="compression\MG1Decoder.cs" />
+    <Compile Include="compression\MG2Decoder.cs" />
+    <Compile Include="compression\MG1Encoder.cs" />
+    <Compile Include="compression\MG2Encoder.cs" />
+    <Compile Include="io\CtmOutputStream.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Deployment.LinuxDeployData generateScript="false" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <ProjectReference Include="..\LZMA\Lzma.csproj">
+      <Project>{ce33df18-f9c8-4d6f-9057-dbb4db96e973}</Project>
+      <Name>Lzma</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

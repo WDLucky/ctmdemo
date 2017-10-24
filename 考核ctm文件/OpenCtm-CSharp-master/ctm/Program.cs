@@ -7,7 +7,7 @@ using OpenCTM;
 
 namespace OpenCTM
 {
-    class demoCtm
+    class demoCtm//这个用数组的实现太low被组长弃用
     {
         /// <summary>
         /// 根据给出的点的数组转换成空间坐标的点

@@ -1,0 +1,48 @@
+﻿<Window x:Class="SecondCtm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="398.667" Width="525">
+    <Grid Margin="0,0,0,1">
+
+        <Button x:Name="button" Content="生成" HorizontalAlignment="Left" Height="45" Margin="360,255,0,0" VerticalAlignment="Top" Width="130"   Command="{Binding CreateCommand}"/>
+        <GroupBox x:Name="groupBox" Header="生成方式" HorizontalAlignment="Left" Height="81" Margin="10,244,0,0" VerticalAlignment="Top" Width="115">
+            <StackPanel Height="71" Margin="0,0,0,-12" VerticalAlignment="Top" HorizontalAlignment="Left" Width="112">
+                <RadioButton x:Name="radioButton1" Content="共点" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" Width="97" IsChecked="{Binding Concurrent}" />
+                <RadioButton x:Name="radioButton2" Content="不共点" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" Width="97"/>
+            </StackPanel>
+        </GroupBox>
+        <TabControl x:Name="tabControl" ItemsSource="{Binding TableViewModels}" SelectedItem="{Binding SelectGroupItem, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="203" Margin="10,10,0,0" VerticalAlignment="Top" Width="480">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding TableName}" Tag="{Binding TableName}" MaxWidth="80" TextTrimming="WordEllipsis"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel Visibility="{Binding IsShowCube}">
+                            <TextBlock Text="正方体棱长" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox Text="{Binding EdgeLengthData.Side,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="1" Grid.Row="0" Margin="0 0 400 0"/>
+                        </StackPanel>
+                        <StackPanel Visibility="{Binding IsShowCuboid}">
+                            <TextBlock Text="长方体长" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox Text="{Binding EdgeLengthData.Length,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" Margin="0 0 400 0"/>
+                            <TextBlock Text="长方体高" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox Text="{Binding EdgeLengthData.Height,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" Margin="0 0 400 0"/>
+                            <TextBlock Text="长方体宽" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox Text="{Binding EdgeLengthData.Width,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" Margin="0 0 400 0"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="36" Margin="130,245,0,0" TextWrapping="Wrap" Text="请输入正整数（默认最小值1）,如果输入不符合规定则将默认输入上次输入的正确值输入。" VerticalAlignment="Top" Width="230" Foreground="#FFFF2300" />
+
+    </Grid>
+</Window>
